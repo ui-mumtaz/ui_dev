@@ -1,0 +1,115 @@
+// scss-lint:disable MergeableSelector, DeclarationOrder
+
+.modal-fullscreen	{
+
+
+	&.modal-backdrop {
+		//display: none;
+		background-color: rgba(255, 255, 255, 0);
+	}
+
+	&.modal {
+		background-color: transparent;
+		height: 100%;
+		width: 100%;
+	  z-index: 1050;
+	  backface-visibility: visible;
+
+		.modal-dialog {
+		background-color: #fff;
+		min-height: 100%;
+		margin: auto;
+		width: 100%;
+
+			.modal-content {
+				background-color: transparent;
+				border: 0;
+				border-radius: 0;
+				//Kill Box shadow and borders
+				box-shadow: none;
+				height: 100%;
+				margin: 0 auto;
+				overflow: auto;
+				padding-top: 70px;
+				width: 900px; //TODO:  fix widths for differentmodal classes
+				.modal-title {
+					//recreate h3 styles
+					font-size: 16px;
+					font-family: "PrecisionSans_W_Lt", "Helvetica Neue", Helvetica, Arial, sans-serif;
+				  font-weight: normal;
+				  line-height: 1.1;
+				  font-variant-ligatures: common-ligatures;
+				  color: $pb-blue;
+				}
+			}
+		}
+	}
+
+	.modal-close {
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		display: block;
+		width: 45px;
+		height: 45px;
+		transform: rotate(90deg);
+		cursor: pointer;
+		//handle if added to button element
+		&:focus {
+			outline: none;
+		}
+		&:after, &:before {
+			transition: all .25s ease-in-out .9s;
+			transform: rotate(0deg);
+			content: '';
+			display: inline-block;
+			width: 1.5px;
+			height: 35px;
+			background-color: $pb-gray-300;
+			margin: 0 auto;
+			position: absolute;
+			right: 0;
+			left: 0;
+			top: 5px;
+			bottom: 5px;
+		}
+	}
+
+	.modal-header {
+		// restyle existing X if it's included in modal
+		.close {
+			span {
+				display: none;
+			}
+			@extend .modal-close;
+		}
+	}
+
+	&.modal.fade .modal-dialog {
+		opacity: 1;
+		transition: transform .85s ease, opacity .0s linear;
+		transform: translate3d(0, 125%, 0);
+	}
+
+
+	&.modal.in .modal-dialog .modal-close:before {
+		transform: rotate(45deg);
+	}
+
+	&.modal.in .modal-dialog .modal-close:after {
+		transform: rotate(-45deg);
+	}
+
+	&.fade {
+		opacity: 0;
+		transition: opacity .3s ease;
+		&.in {
+			opacity: 1;
+			transition: opacity .4s ease;
+		}
+	}
+
+	&.modal.in .modal-dialog {
+		transform: translate3d(0, 0, 0);
+	}
+}

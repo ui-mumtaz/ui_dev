@@ -1,0 +1,50 @@
+
+
+// FROM DS 2.0;
+// scss-lint:disable MergeableSelector
+
+
+// NOTE: also a copy of this selector in forms.scss
+%fancy-focus {
+  border-color: $pb-blue;
+  border-width: 1px;
+  outline: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+}
+
+.selectize-input {
+  border-color: $input-border;
+  border-radius: 0;
+  &.focus {
+    @extend %fancy-focus;
+  }
+}
+
+.selectize-control.single .selectize-input  {
+  border-color: $input-border;
+  border-radius: 0;
+  &.focus {
+    @extend %fancy-focus;
+  }
+}
+
+
+// adds down-arrows to all selectize menus
+.selectize-input:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 17px;
+  margin-top: -3px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  border-color: #333 transparent transparent;
+}
+.selectize-input.dropdown-active:after {
+  margin-top: -4px;
+  border-width: 0 5px 5px;
+  border-color: transparent transparent #333;
+}

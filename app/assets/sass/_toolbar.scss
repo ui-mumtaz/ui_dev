@@ -1,0 +1,112 @@
+.toolbar {
+
+  // all items that have padding, when in toolbar switch to "sm"
+  .btn {
+    padding: $padding-small-vertical $padding-small-horizontal;
+    font-family: $font-family-ps-regular;
+    line-height: 1.5;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  select {
+    padding: $padding-small-vertical $padding-small-horizontal;
+    font-family: $font-family-ps-regular;
+    line-height: 1.5;
+    font-size: 12px;
+    height: 30px;
+  }
+
+
+  // all button types, blue text with gray borders
+  .btn-default,
+  .btn-cancel,
+  .btn-link,
+  .btn-group .btn-default,
+  .btn-group-vertical .btn-default,
+  .dropdown-toggle {
+    color: $pb-blue;
+    background-color: transparent;
+    border-color: $input-border;
+    &:hover {
+      background-color: #d9dced;
+      border-color: #d9dced;
+    }
+  }
+
+  .btn-link:focus, .btn-link:hover {
+    text-decoration: none;
+  }
+
+
+  // input groups place in toolbar are also set to "sm" specs
+  .input-group {
+    .form-control {
+      padding: $padding-small-vertical $padding-small-horizontal;
+      height: 30px;
+      line-height: 1.5;
+      font-size: 12px;
+      &.search {
+        padding-right: 25px;
+        &:not(:valid) ~ .search-clear {
+          opacity: 0;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+
+  .input-group-addon {
+    padding: $padding-small-vertical $padding-small-horizontal;
+    color: $pb-blue;
+  }
+
+
+
+  .input-group-btn {
+    &.open {
+      color: #fff;
+
+      .dropdown-toggle {
+        color: #fff;
+      }
+    }
+  }
+
+
+  .search-clear {
+    position: absolute;
+    padding-right: 3px;
+    padding-left: 0;
+    right: 0;
+    z-index: 10;
+    border: 0;
+    opacity: 1;
+    color: $pb-gray-200;
+    transition: all 0.3s ease-in-out;
+    .btn {
+      border: 0;
+    }
+
+  }
+
+  .dropdown-menu>li>a {
+      font-family: $font-family-ps-regular;
+      color: $pb-blue;
+      font-size: 13px;
+      display: block;
+      padding: 3px 20px;
+      clear: both;
+      line-height: 1.42857143;
+      white-space: nowrap;
+      a:hover {
+        text-decoration: none;
+      }
+  }
+
+  .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+    background-color: $pb-blue;
+    color: #fff;
+  }
+
+}

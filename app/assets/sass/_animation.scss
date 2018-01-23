@@ -1,0 +1,149 @@
+
+// The animate class is apart of the element and the ng-enter class
+// is attached to the element once the enter animation event is triggered
+
+.fadein {
+  transition: all linear .3s;
+   opacity: 1;
+   &.ng-hide {
+     opacity: 0;
+   }
+}
+
+
+.animate-switch-container {
+  position: relative;
+  background: #fff;
+}
+
+
+.animate-switch.ng-animate {
+  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+
+}
+
+.animate-switch.ng-leave.ng-leave-active,
+.animate-switch.ng-enter {
+  opacity: 0;
+}
+.animate-switch.ng-leave,
+.animate-switch.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+// moved from "main.scss"
+div[ui-view].ng-enter {
+  animation: fadeIn .5s;
+}
+
+
+// [ng-if].ng-enter {
+//   animation: fadeIn .5s;
+// }
+// [ng-if].ng-leave {
+//   animation: fadeOut .5s;
+// }
+
+
+
+//*****START NOTES*****//
+//TODO: Find a way to gracefully handle "displacement" when something gets faded in
+
+//*****END NOTES*****//
+
+
+
+
+//************BASELINE CLASSES*************//
+
+//consistensy in delay animations
+%pb-delay {
+  transition-duration: 0s;
+}
+.pb-delay-enter {
+  @extend %pb-delay;
+  transition-delay: 70ms;
+}
+.pb-delay-leave {
+  @extend %pb-delay;
+  transition-delay: 15ms;
+}
+
+$cubic-bezier: cubic-bezier(0.190, 1, 0.220, 1);
+$translate-off: 20px;
+$translate-on: 0;
+$scale-off: .5;
+$scale-on: 1;
+
+$opacity-transition-fast: opacity 80ms linear;
+$opacity-transition: opacity 120ms linear;
+$opacity-transition-slow: opacity 200ms linear;
+
+$transform-transition-fast: transform 100ms $cubic-bezier;
+$transform-transition: transform 200ms $cubic-bezier;
+$transform-transition-slow: transform 500ms $cubic-bezier;
+
+//************END BASELINE CLASSES*************//
+
+
+.pb-animate-fade {
+  transition: $opacity-transition-slow;
+  &.ng-hide {
+    opacity: 0;
+    transition: $opacity-transition;
+  }
+  &.ng-show {
+    opacity: 1;
+  }
+}
+
+// set up basic transform class
+@mixin pb-animate-transform($transform-type) {
+  transition: $opacity-transition-slow, $transform-transition;
+  backface-visibility: visible;
+  &.ng-hide {
+    transition: $opacity-transition-fast;
+    opacity: 0;
+    @if $transform-type == fadeUp {
+      transform: translateY($translate-off);
+    } @else if $transform-type == fadeLeft {
+      transform: translateX($translate-off);
+    } @else if $transform-type == fadeRight {
+      transform: translateX(-$translate-off);
+    } @else if $transform-type == fadeScale {
+      transform: scale($scale-off);
+    }
+
+  }
+  &.ng-show {
+    opacity: 1;
+    @if $transform-type == fadeUp {
+      transform: translateY($translate-on);
+    } @else if $transform-type == fadeLeft {
+      transform: translateX($translate-on);
+    } @else if $transform-type == fadeRight {
+      transform: translateX($translate-on);
+    } @else if $transform-type == fadeScale {
+      transform: scale($scale-on);
+    }
+  }
+}
+.pb-animate-fadeUp {
+  @include pb-animate-transform(fadeUp);
+}
+
+.pb-animate-fadeScale {
+  @include pb-animate-transform(fadeScale);
+}
+
+.pb-animate-fadeLeft {
+   @include pb-animate-transform(fadeLeft);
+}
+
+.pb-animate-fadeRight {
+   @include pb-animate-transform(fadeRight);
+}
