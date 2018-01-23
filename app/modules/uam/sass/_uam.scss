@@ -1,0 +1,246 @@
+.uam {
+.inactive {
+  color: #ccc;
+  a {
+    color: inherit;
+    pointer-events: none;
+  }
+}
+.btn-gear {
+  padding: 0;
+}
+// .table-row-selected {
+//   background-color: transparentize($pb-purple, 0.8);
+//   &:hover {
+//     background-color: transparentize($pb-purple, 0.5);
+//   }
+// }
+
+.inline-radios {
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.list-buyseats {
+  li {
+    border-right: 1px solid $pb-gray-200;
+    padding-right: 10px;
+    &:last-child {
+      border-right: 0;
+    }
+  }
+}
+
+.promo-boxes {
+  float: right;
+  overflow: auto;
+  margin-bottom: -25px;
+  margin-top: -50px;
+  .promo-box {
+    float: left;
+    margin-right: 20px;
+    text-align: center;
+    .seat-status {
+      margin-bottom: 10px;
+      width: 110px;
+      height: 70px;
+      border: 0;
+      border-radius: 0;
+      .panel-body {
+        padding: 10px;
+        background-color: $pb-gray-50;
+        color: $pb-gray-500;
+      }
+      .big-number {
+        font-family: PrecisionSans_W_Bd;
+        font-size: 32px;
+        line-height: 1;
+      }
+      .caption {
+        font-size: 12px;
+      }
+    }
+    .action-link {
+      font-size: 12px;
+    }
+  }
+}
+
+
+
+
+
+.inline-edit {
+  -webkit-appearance: none;
+  outline: 0;
+  border: 0;
+  padding: 0;
+  &.title {
+    font-family: 'PrecisionSans_W_Lt', arial, sans-serif;
+    font-size: 24px;
+    color: $brand-primary;
+  }
+}
+
+
+// add role page layout
+.add-role {
+  .highlight-row {
+    background-color: $pb-gray-50;
+  }
+
+  .disabled-row {
+    color: $pb-gray-200;
+  }
+}
+
+.cb-column {
+  width: 20px;
+}
+
+.icon-column {
+  width: 20px;
+}
+
+input[type='text'] + input[type='text'] {
+  margin-top: 10px;
+}
+.show-hide {
+  font-size: 12px;
+  cursor: pointer;
+  color: $pb-blue;
+}
+
+// for collapsible permissions list on Roles page
+.permission-details {
+  margin: 0 18px 40px;
+}
+$privileges-column-width: 50%;
+
+// top level privilege list
+.privilege-list {
+  list-style: none;
+  margin-top: 10px;
+  border-top: 1px solid $pb-gray-50;
+  padding-top: 10px;
+  span.cb {
+    float: right;
+  }
+  .label-cb {
+    width: $privileges-column-width;
+    display: inline-block;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    .privilege-list-options {
+      opacity: 0.5;
+    }
+  }
+}
+
+// second level, actually a UL
+.privilege-list-options {
+  padding-left: 0;
+  list-style: none;
+  margin: 20px 0 5px;
+  padding: 0 0 2px;
+
+  //border-bottom: 1px solid $brand-primary;
+  span.cb {
+    float: right;
+  }
+  .label-cb {
+    width: $privileges-column-width;
+    display: inline-block;
+  }
+}
+
+// third level also a UL
+.privilege-list-details {
+  padding: 0 20px;
+  list-style: none;
+
+  span.cb {
+    float: right;
+  }
+  .label-cb {
+    width: 50%;
+    display: inline-block;
+  }
+}
+
+.user-privileges {
+  th {
+    text-align: center;
+  }
+  td:nth-child(n+2) {
+    text-align: center;
+  }
+}
+
+.shaded {
+  background-color: $pb-gray-50;
+}
+
+// from sam for Roles
+.btn-link.text-danger {
+  color: #a94442;
+}
+.miller-columns-plain {
+  min-height: 550px;
+  width: 100%;
+  display: flex;
+  .miller-columns-plain-col {
+    border: 1px solid $pb-gray-50;
+    &.left {
+      width: 200px;
+      padding: 0;
+    }
+    &.right {
+      flex: 1;
+      padding: 20px;
+      border-left: 0;
+    }
+  }
+  .list-group {
+    border: 0;
+    .list-group-item {
+      line-height: 20px;
+      +.list-group-item {
+        border-top: 0;
+      }
+    }
+  }
+}
+
+.list-group-item a,
+a:hover,
+a:active,
+a.row-selected {
+  border-radius: 0;
+}
+
+.inner-column {
+  .list-group-item {
+    padding-left: 0;
+    &:before {
+      content: '\f054';
+      font-family: 'FontAwesome';
+      display: inline-block;
+      margin-right: 5px;
+    }
+    &.open {
+      &:before {
+        transform: rotate(90deg);
+        transition: all ease 0.15s;
+      }
+    }
+  }
+}
+
+.list-group-details .list-group-item {
+  border: 0;
+}
+
+}

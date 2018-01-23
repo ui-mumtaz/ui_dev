@@ -1,0 +1,220 @@
+
+  //controls for search/sort/filter
+  .date {
+    input {width: 180px;}
+  }
+  .date-picker-container {
+    display: inline-block;
+  }
+  .date-picker {
+    background-color: #fff;
+  }
+
+  .icon-14 {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+  }
+  .icon-adobe {
+    @extend .icon-14;
+    background: url('http://pixabay.com/static/uploads/photo/2014/04/02/11/03/adobe-logo-305334_640.png') no-repeat center/contain;
+  }
+  .icon-excel {
+    @extend .icon-14;
+    background-image: url('http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-excel-icon.png');
+  }
+  .icon-usps {
+    @extend .icon-14;
+    background-image: url('http://png-4.vector.me/files/images/6/4/64313/united_states_post_office_thumb.png');
+  }
+
+  .graphics {
+    .collapsible {
+      background-color: $pb-gray-50;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+    .container-sm {
+      background-color: $pb-gray-50;
+      height: 90px;
+      .icon {
+        float: left;
+        position: absolute;
+        height: 100%;
+        width: 15%;
+        padding-top: 6px;
+        color: $pb-gray-200;
+      }
+
+    }
+    .content {
+      padding: 10px 10px 10px 0;
+      width: 85%;
+      float: right;
+      display: inline-block;
+      height: 100%;
+    }
+    h2 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      &.text-orange {
+        color: $brand-warning;
+      }
+      &.text-green {
+        color: $brand-success;
+      }
+      &.text-grey {
+        color: $pb-gray-300;
+      }
+    }
+    label {
+      color: $pb-gray-300;
+    }
+  }
+
+
+    .btnCopy {
+      color: $text-color;
+      transition: opacity .15s linear;
+    }
+
+    .reports-createdLabel.ng-enter {
+      transition: 1s linear opacity, .3s bezier(.1, .8, 1.15, 1) transform;
+      transform: translateY(20px);
+      opacity: 0;
+        &.ng-enter-active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    .reports-createdLabel.ng-enter-stagger {
+      transition-delay: .07s;
+      transition-duration: 0s;
+    }
+
+
+    tr:not(.headerList) {
+        transition: all .15s linear .05s;
+      .btnCopy {
+          opacity: .5;
+           ~ .popover {
+            pointer-events: none;
+          }
+
+        }
+      &.on {
+        .btnCopy {
+          &.active ~ .popover {
+            opacity: 0;
+          }
+        }
+      }
+      &:hover {
+        transition: all .15s linear .05s;
+        cursor: pointer;
+        background-color: $table-bg-active;
+        .btnCopy {
+          opacity: 1;
+        }
+      }
+
+      &.on {
+        cursor: pointer;
+        background-color: $table-bg-active;
+        transition: all .15s linear .05s;
+        .btnCopy {
+         color: $pb-medium-blue;
+          opacity: 1;
+        }
+      }
+    }
+
+    td {
+      line-height: 14px;
+      vertical-align: middle;
+    }
+
+    .carrier-logo {
+      max-width: 35px;
+      max-height: 35px;
+    }
+
+    .row-arrow {
+    cursor: pointer;
+    transition: all linear .15s;
+
+      &:before {
+        content:'';
+        background: url('iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2Fy ZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAA AAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5U Y3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6 eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8w Mi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRw Oi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpE ZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRv YmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNv bS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20v eGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRv YmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0i eG1wLmlpZDo4RTlBQjJGREYyODYxMUU0QTI4Mjg1MUE3RTRDQTU1RiIgeG1wTU06 RG9jdW1lbnRJRD0ieG1wLmRpZDo4RTlBQjJGRUYyODYxMUU0QTI4Mjg1MUE3RTRD QTU1RiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAu aWlkOjhFOUFCMkZCRjI4NjExRTRBMjgyODUxQTdFNENBNTVGIiBzdFJlZjpkb2N1 bWVudElEPSJ4bXAuZGlkOjhFOUFCMkZDRjI4NjExRTRBMjgyODUxQTdFNENBNTVG Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8 P3hwYWNrZXQgZW5kPSJyIj8+1TtWWwAAAPpJREFUeNrclL0KwjAUhVNt1a3Uxcln 6NShczfFHwS1g88nqFXBwbfo1idwc0j3FLSeQIYSGvqXycBHAjf3JLn3ECPPc6Jz 9IjmoV3QVAWSJCFpmo6xTOWYbdvEdd3yRF7DMoIgWCD8Ahs5x/d9ZZ7yyaZpDjFN wQmsizHLslrVMBK3M8AFrHQ05Q52Yl9UR7ROl29gK/bymy512IaL8iZ9wFUc0NmH DHxBn/elq+AcPMEIhODY2NiSGH/yAOzBuUsNZwWxsEqsSpBb5CHqFQqDt/dhlmW8 +BQcZDHGmFLQUP2HcRwTSukEy7cccxyHeJ7XTPB/P9ifAAMAQQBZ9o/a6CMAAAAA SUVORK5CYII= ') no-repeat center/80%;
+        width: 20px;
+        height: 20px;
+        display: block;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        margin: 0 auto;
+      }
+
+    &.down-arrow {
+      transform: rotate(90deg);
+      transition: all linear .15s;
+      }
+    }
+
+    .row-details {
+      background-color: #f5f5f5;
+      border-top: #ccc solid 1px;
+      transition: opacity .2s linear;
+      opacity: 1;
+
+      td:nth-child(2) {
+        border-top: 0;
+        cursor: default;
+        vertical-align: top;
+        transition: opacity .2s linear;
+        opacity: 0;
+        .row {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height .15s linear;
+        }
+      }
+
+      table {
+        background-color: #f5f5f5;
+      }
+
+      &.active {
+        transition: opacity .2s linear;
+        td:nth-child(2) {
+          transition: opacity .2s linear;
+          opacity: 1;
+          .row {
+            max-height: 500px;
+            transition: max-height .3s linear;
+          }
+        }
+      }
+      span {
+        line-height: 19px;
+      }
+      //messing about with the labels
+      h5 {
+        color: $pb-gray-400;
+        font-weight: 300;
+        font-size: 12px;
+        letter-spacing: .5px;
+      }
+
+    }
+
+    .reports-addedPostage td:not(.carrier) {
+      color: green;
+    }
+
+    .trans-refund td:not(.carrier) {
+      color: #ef8200;
+    }
+  }
