@@ -1,0 +1,118 @@
+<div class="container">
+
+  <div class="row spacer-top-lg spacer-bottom-md">
+    <div class="col-md-8  col-md-offset-2">
+      <div class="vcenter">
+        <h1 style="margin-top: 0;">Deliver packages</h1>
+        <a class="header-clear-link" ng-disabled="!packages.validTrackingNumber" ng-click="packages.resetAll()">Clear</a>
+
+      </div>
+    </div>
+  </div>
+
+  <form name="trackingForm" ng-submit="packages.submitNumber()">
+    <div class="row">
+
+<!-- left -->
+      <div class="col-md-4  col-md-offset-2">
+        <div class="form-group">
+          <div class="help-block-top">
+            <label for="search">Tracking number</label><a href="" class="help-block" ng-click="packages.modals.showScanHelp()">What barcode do I scan?</a>
+          </div>
+          <div class="form-group">
+            <input class="form-control" id="trackingnumber" name="search"  ng-keydown="($event.keyCode == 13 || $event.keyCode == 9) && packages.submitNumber('add', packages.addTrackingNumber)" ng-model="packages.addTrackingNumber" placeholder="Scan or enter tracking number" type="text">
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4  col-md-offset-2">
+          <div class="form-group">
+            <label for="carriers">Carrier</label>
+            <select class="form-control" ng-model="packages.carrier" ng-options="s.name for s in packages.carriers track by s.value"/>
+          </div>
+
+          <div class="form-group">
+            <label for="recipient">Recipient</label>
+            <select class="form-control" ng-model="packages.recipientSelect.selected" options="packages.recipientSelect.recipients" selectize="packages.recipientSelect.options"/>
+          </div>
+
+          <div class="form-group">
+            <label for="recipient">Sender</label>
+            <select class="form-control" id="senders" name="senders" ng-model="packages.asset.sender_id" options="packages.senderSelect.senders" selectize="packages.senderSelect.options"/>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox" style="margin-top:30px;">
+              <label><input type="checkbox" ng-model="packages.arrivedDamaged"> Arrived damaged</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="recipient">Comments</label>
+            <textarea class="form-control" ng-model="packages.comments"></textarea>
+          </div>
+      </div>
+
+
+<!-- right -->
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="carriers">Status</label>
+            <select class="form-control" ng-model="packages.status" ng-options="s.label for s in packages.statusMenu track by s.value"/>
+          </div>
+
+          <div class="form-group" ng-show="packages.status.value == 'delivered'">
+            <label for="recipient">Delivered to
+            </label><select class="form-control" ng-model="packages.deliverySelect.selected" options="packages.recipientSelect.recipients" selectize="packages.recipientSelect.options"/>
+          </div>
+
+          <div class="form-group" ng-show="packages.status.value == 'delivered'">
+            <label for="recipient">Signature</label>
+            <textarea class="form-control" rows="6" ng-model="packages.signature"></textarea>
+          </div>
+        </div>
+      </div>
+      </form>
+
+      <div class="row spacer-top-md">
+        <div class="col-md-8  col-md-offset-2 vcenter buttonbar">
+          <button class="btn btn-primary" ng-click="packages.save('many')" ng-disabled="!packages.validTrackingNumber">Save</button>
+          <button class="btn btn-default" ng-click="packages.save('one')">Close</button>
+        </div>
+      </div>
+
+      <div class="row spacer-top-xl">
+        <div class="col-md-8 col-md-offset-2 package-received-header" ng-class="{bigNumber: packages.animating}">
+        Total: {{packages.limit}} <i class="fa fa-check" ng-show="packages.animating"></i>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+          <p ng-if="packages.limit==0">No deliveries yet.</p>
+          <table class="table package-batch-table" ng-if="packages.limit>0">
+              <thead>
+                <th>Received</th>
+                <th>Carrier</th>
+                <th>Package Tracking #</th>
+                <th>Status</th>
+                <!-- <th>Delivered to</th> -->
+                <th>Recipient</th>
+              </thead>
+            <tbody>
+              <tr ng-repeat="p in packages.packages | limitTo: packages.limit" class="repeated-item">
+                <td>{{p.receivedDate | date: "MM/dd/yyyy &ndash; h:mma"}}</td>
+                <td>{{p.carrier}}</td>
+                <td>{{p.trackingNumber}}</td>
+                <td>Delivered</td>
+                <!-- <td><span ng-if="p.status !== 'Attempted'">{{p.deliveredTo}}</span></td> -->
+                <td>{{p.addressedTo}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>

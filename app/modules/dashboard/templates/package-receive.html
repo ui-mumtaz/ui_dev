@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="row spacer-top-lg spacer-bottom-md">
+    <div class="col-md-8 col-md-offset-2 vcenter">
+      <h1 style="margin-top: 0;">Receive packages</h1>
+      <a class="header-clear-link" ng-disabled="!packages.validTrackingNumber" ng-click="packages.resetAll()">Clear</a>
+    </div>
+  </div>
+  <form name="trackingForm" ng-submit="packages.submitNumber()">
+    <div class="row">
+      <!-- left -->
+      <div class="col-md-4 col-md-offset-2">
+        <div class="form-group" ng-class="{'has-error': packages.packageExists}">
+          <div class="help-block-top"><label for="search">Tracking number</label>&nbsp; <i class="fa fa-info-circle" ng-click="packages.modals.showScanHelp()"></i>
+          </div>
+
+            <div class="input-group">
+
+              <input type="text" class="form-control" name="search" id="trackingnumber" ng-model="packages.addTrackingNumber" ng-keydown="($event.keyCode == 13 || $event.keyCode == 9) && packages.submitNumber('add', packages.addTrackingNumber)"  placeholder="{{packages.placeholderText}}">
+
+              <span class="input-group-btn">
+                <button pb-button-progress class="btn btn-default btn-stretch" ng-class="{'active' : packages.buttonAdding.isLoading}" ng-model="packages.buttonAdding" type="button" ng-click="packages.buttonAdding.load();packages.createTrackingNumber()">+</button>
+              </span>
+            </div><!-- /input-group -->
+
+
+          <span class="help-block" ng-if="packages.packageExists">This package already exists.
+            <a href="" ng-click="packages.editPackage()">Edit package</a>.</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-2">
+        <div class="form-group">
+          <label for="carriers">Carrier</label>
+          <select ng-model="packages.carrier" ng-options="s.name for s in packages.carriers track by s.value" class="form-control"></select>
+        </div>
+        <div class="form-group">
+          <label for="recipient">Recipient</label>
+          <select class="form-control" id="recipient-menu" ng-model="packages.recipientSelect.selected" options="packages.recipientSelect.recipients"
+          selectize="packages.recipientSelect.options"></select>
+        </div>
+        <div class="form-group">
+          <label for="recipient">Sender</label>
+          <select id="senders" name="senders" class="form-control" selectize="packages.senderSelect.options" options="packages.senderSelect.senders"
+          ng-model="packages.asset.sender_id"></select>
+        </div>
+        <div class="form-group">
+          <div class="checkbox" style="margin-top:30px;">
+            <label>
+              <input type="checkbox" ng-model="packages.arrivedDamaged"> Arrived damaged</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="recipient">Comments</label>
+          <textarea class="form-control" ng-model="packages.comments"></textarea>
+        </div>
+      </div>
+      <!-- right -->
+      <div class="col-md-4 ">
+        <div class="form-group">
+          <label for="carriers">Status</label>
+          <select ng-model="packages.status" ng-options="s.label for s in packages.statusMenu track by s.value" class="form-control"></select>
+        </div>
+        <div class="form-group" ng-show="packages.status.value == 'delivered'">
+          <label for="recipient">Delivered to</label>
+          <select selectize="packages.recipientSelect.options" options="packages.recipientSelect.recipients" ng-model="packages.deliverySelect.selected"
+          class="form-control"></select>
+          <select class="form-control" ng-if="packages.isAdd" disabled="disabled"></select>
+        </div>
+        <div class="form-group" ng-show="packages.status.value == 'delivered'">
+          <label for="recipient">Signature</label>
+          <textarea class="form-control" rows="6"></textarea>
+        </div>
+      </div>
+  </div>
+  </form>
+
+
+
+  <div class="row spacer-top-md vcenter">
+    <div class="col-md-5 col-md-offset-2 buttonbar">
+      <!-- <button class="btn btn-primary" ng-disabled="!packages.validTrackingNumber" ng-click="packages.save('many')">Save</button> -->
+
+      <!-- Split button -->
+      <div class="btn-group">
+
+          <button pb-button-progress class="btn btn-primary" type="Button" ng-disabled="!packages.validTrackingNumber"  ng-click="packages.buttonLoading.load();packages.save('many')" ng-model="packages.buttonLoading">Save</button>
+
+          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" ng-disabled="!packages.validTrackingNumber">
+            <i class="fa fa-print"></i>&nbsp;<span class="caret"></span>
+          </button>
+
+          <ul class="dropdown-menu">
+            <li>
+              <a href="" ng-click="packages.buttonPrinting.load(); packages.save('many')">Save and Print</a>
+            </li>
+          </ul>
+
+        </div>
+      <!-- end -->
+
+      <button class="btn btn-default" ng-click="packages.save('one')">Close</button>
+    </div>
+    <div class="col-md-2" ng-class="{bigNumber: packages.animating}">
+      <span><a ui-sref="tracking">Group total: {{packages.limit}} </a></span>
+    </div>
+    <div class="col-md-3">
+      <span>Last 1Z86905689048906486</span>
+    </div>
+    <div class="col-md-2">
+      <span><a href="">Reprint Package Label</a></span>
+    </div>
+  </div>
+
+
+</div>

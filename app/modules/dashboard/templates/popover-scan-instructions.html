@@ -1,0 +1,25 @@
+<div>
+
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="caro.closeme()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title"><i class="fa fa-info-circle"></i> Get more from your scan</h4>
+    <p>The enhanced barcode may provide more information about your package.</p>
+
+  </div>
+
+  <div class="modal-body">
+    <carousel interval="myInterval">
+      <slide ng-repeat="slide in caro.slides">
+        <img ng-src="{{slide.path}}" style="margin:auto;">
+        <div class="carousel-caption">
+<!-- <h4>Slide {{$index}}</h4> -->
+          <p>{{slide.caption}}</p>
+        </div>
+      </slide>
+    </carousel>
+
+  </div>
+  <div class="modal-footer text-center">
+    <button class="btn btn-primary" ng-click="caro.closeme()">Got it</button>
+  </div>
+</div>

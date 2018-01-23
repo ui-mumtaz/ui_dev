@@ -1,0 +1,53 @@
+.carousel-control.right,
+.carousel-control.left {
+  background-image: none;
+  color: $text-color;
+}
+
+.scan-help {
+  .modal-header {
+    padding: 15px 15px 0;
+    h4.modal-title {
+      font-size: 20px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+  .modal-footer {
+    button {
+      display: block;
+      margin: 5px auto;
+      min-width: 100px;
+    }
+  }
+  .carousel-inner {
+    overflow-y: visible;
+    padding-bottom: 60px;
+    .carousel-caption {
+      bottom: -70px;
+      text-shadow: none;
+      color: $text-color;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+}
+
+.carousel-indicators {
+  bottom: -10px;
+  .active {
+    background-color: $pb-gray-300;
+    margin-right: 5px;
+  }
+  li {
+    border: 1px solid #000;
+    margin-right: 5px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .carousel-indicators {
+    bottom: -20px;
+  }
+}

@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row spacer-top-lg">
+    <div class="col-md-8 col-md-offset-2 vcenter">
+      <h1 style="margin-top: 0;">Edit packages</h1>
+      <a class="header-clear-link" ng-disabled="!packages.validTrackingNumber" ng-click="packages.resetAll()">Clear</a>
+    </div>
+  </div>
+  <form name="trackingForm" ng-submit="packages.submitNumber()">
+
+    <div class="row spacer-top-lg">
+      <!-- left -->
+      <div class="col-md-4  col-md-offset-2">
+        <div class="form-group">
+          <div class="help-block-top"><label for="search">Tracking number</label><a href="" class="help-block" ng-click="packages.modals.showScanHelp()">What barcode do I scan?</a>
+          </div>
+          <div class="form-group">
+            <input class="form-control" id="trackingnumber" name="search" ng-model="packages.addTrackingNumber" ng-keydown="($event.keyCode == 13 || $event.keyCode == 9) && packages.submitNumber('add', packages.addTrackingNumber)" 
+            ng-blur="packages.submitNumber('add', packages.addTrackingNumber)" placeholder="Scan or enter tracking number" type="text">
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" ng-hide="packages.isAdd"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-2">
+        <div class="form-group">
+          <label for="carriers">Carrier</label>
+          <select ng-model="packages.carrier" ng-options="s.name for s in packages.carriers track by s.value" class="form-control"></select>
+        </div>
+        <div class="form-group">
+          <label for="recipient">Recipient</label>
+          <select class="form-control" id="recipientMenu" ng-model="packages.recipientSelect.selected" options="packages.recipientSelect.recipients"
+          selectize="packages.recipientSelect.options"></select>
+        </div>
+        <div class="form-group">
+          <label for="recipient">Sender</label>
+          <select id="senders" name="senders" class="form-control" selectize="packages.senderSelect.options" options="packages.senderSelect.senders"
+          ng-model="packages.asset.sender_id"></select>
+        </div>
+        <div class="form-group">
+          <div class="checkbox" style="margin-top:30px;">
+            <label>
+              <input type="checkbox" ng-model="arrivedDamaged">Arrived damaged</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="recipient">Comments</label>
+          <textarea class="form-control"></textarea>
+        </div>
+      </div>
+      <!-- right -->
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="carriers">Status</label>
+          <select ng-model="packages.status" ng-options="s.label for s in packages.statusMenu track by s.value" class="form-control"></select>
+        </div>
+        <div class="form-group" ng-if="packages.status.value == 'delivered'">
+          <label for="recipient">Delivered to</label>
+          <select selectize="packages.recipientSelect.options" options="packages.recipientSelect.recipients" ng-model="packages.deliverySelect.selected"
+          class="form-control"></select>
+          <select class="form-control" ng-if="packages.isAdd" disabled="disabled"></select>
+        </div>
+        <div class="form-group" ng-if="packages.status.value == 'delivered'">
+          <label for="recipient">Signature</label>
+          <textarea class="form-control" rows="6"></textarea>
+        </div>
+      </div>
+  </div>
+  </form>
+  <div class="row spacer-top-md">
+    <div class="col-md-8 col-md-offset-2 vcenter buttonbar">
+      <button class="btn btn-primary" ng-disabled="!packages.validTrackingNumber" ng-click="packages.save('many')">Save</button>
+      <!-- <div>
+        <label class="checkbox-inline">
+          <input id="inlineCheckbox1" type="checkbox" value="option1">Update another</label>
+      </div> -->
+      <button class="btn btn-default" ng-click="packages.save('one')">Close</button>
+    </div>
+
+  </div>
+
+</div>

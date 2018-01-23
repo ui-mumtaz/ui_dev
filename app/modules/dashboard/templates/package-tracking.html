@@ -1,0 +1,131 @@
+<div class="container">
+<div class="row spacer-top-md">
+  <div class="col-md-12">
+      <h1>Packages</h1>
+    </div>
+  </div>
+
+
+
+  <div class="row toolbar">
+
+    <div class="col-md-3">Total: 28</div>
+
+    <div class="col-md-6 text-right">
+
+        <a class="btn btn-link date-picker" date-range-picker href="" ng-model="tracking.table.daterangepicker.date" options="tracking.table.daterangepicker.options" type="text">
+          <i class="fa fa-fw fa-calendar"/>{{tracking.table.daterangepicker.date.startDate | amDateFormat: 'MM/DD/YY'}}
+          to
+          {{tracking.table.daterangepicker.date.endDate | amDateFormat: 'MM/DD/YY'}}
+          <i class="fa fa-angle-down"/>
+        </a>
+
+
+      <div class="btn-group" dropdown is-open="status.isopen">
+        <button type="button" class="btn dropdown-toggle" dropdown-toggle>
+          {{tracking.status.dropdownLabel}}&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li ng-repeat="s in tracking.statusMenu" ng-model="tracking.search.status">
+            <a ng-click="tracking.status.dropdownChange(s)">{{s.label}}</a>
+          </li>
+        </ul>
+      </div>
+      <!-- <select ng-model="selected" ng-options="s for s in packages.statusMenu" class="form-control"></select> -->
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon"><i class="fa fa-search"></i></span>
+          <input class="form-control" type="text" ng-model="tracking.search.$" placeholder="Search">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="10">&nbsp;</th>
+            <th>Status Date</th>
+            <th>Carrier</th>
+            <th>Package Tracking #</th>
+            <th>Status</th>
+            <th>Delivered to</th>
+            <th>Recipient</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody ng-repeat-start="p in tracking.packages | filter:tracking.search as searchResults">
+          <!-- <tr  ng-click="showDetails = !showDetails" ng-click="$event.originalEvent.dropdown" class="expander"> -->
+          <tr class="expander">
+            <td>
+              <div class="row-arrow"
+                ng-class="{'down-arrow' : showDetails}"
+                ng-click="showDetails = !showDetails"
+                ng-init="showDetails = (searchResults.length == 1)">
+              </div>
+            </td>
+            <td>{{p.receivedDate | date: "MM/dd/yyyy &ndash; h:mma"}}</td>
+            <td>{{p.carrier}}</td>
+            <td>{{p.trackingNumber}}</td>
+            <td>{{p.status}}</td>
+            <td><span ng-if="p.status !== 'Attempted'"><span ng-if="tracking.currentStatus !== 'undelivered'">{{p.deliveredTo}}</span></span></td>
+            <td>{{p.addressedTo}}</td>
+          </tr>
+          <tr class="row-details expanded" ng-show="showDetails" ng-class="{ 'active': showDetails }">
+              <td>&nbsp;</td>
+              <td colspan="7">
+
+                <table class="details">
+                  <tr>
+                    <td>
+                      <table>
+                          <tr>
+                            <th>Addressed to</th>
+                            <th>Sender</th>
+                            <th>&nbsp;</th>
+                            <th>Comments</th>
+                          </tr>
+                          <tr>
+                            <td>{{p.addressedTo}}</td>
+                            <td>{{p.sender}}</td>
+                            <td><span ng-if="p.arrivedDamaged">Arrived Damaged</span></td>
+                            <td>{{p.comments}}</td>
+                          </tr>
+                      </table>
+                      <h6 class="spacer-top-sm">Package History</h6>
+                        <table>
+                          <tr ng-repeat="h in p.history">
+                            <td>{{h.date}}</td>
+                            <td>{{h.time}}</td>
+                            <td>{{h.activity}}</td>
+                            <td>{{h.location}}</td>
+                          </tr>
+                        </table>
+                    </td>
+                    <td>
+                      <img src="assets/img/sig.png" alt="Signature" />
+                    </td>
+                    <td>
+                      <button class="btn btn-sm btn-default" ui-sref="edit({id: p.id})">Edit</button>
+                      <button class="btn btn-sm btn-default" ng-click="tracking.modals.deleteUser()">Delete</button>
+                    </td>
+                  </tr>
+                </table>
+                <div class="edit-buttons">
+
+                </div>
+
+              </td>
+            </tr>
+          </tbody>
+          <tbody ng-repeat-end></tbody>
+      </table>
+  </div>
+
+</div>
+
+</div>

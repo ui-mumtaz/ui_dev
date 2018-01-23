@@ -1,0 +1,64 @@
+<div class="dashboard-flex">
+<!-- flex version of dashboard
+     this outer div just for scoping-->
+
+  <div class="dashboard-container">
+    <!-- this container is set to display-flex, column to space out the next 4 -->
+
+    <ul class="dashboard-icons row">
+
+      <li class="dashboard-icon">
+        <a href="" ui-sref="receive"><img src="assets/img/icon-receive.svg" alt="Receive" /></a>
+        <a href="" ui-sref="receive">Receive</a>
+      </li>
+
+      <li class="dashboard-icon">
+        <a href="" ui-sref="update"><img src="assets/img/icon-update.svg" alt="Edit" /></a>
+        <a href="" ui-sref="update">Edit</a>
+      </li>
+
+      <li class="dashboard-icon">
+        <a href="" ui-sref="deliver"><img src="assets/img/icon-deliver.svg" alt="Deliver" /></a>
+        <a href="" ui-sref="deliver">Deliver</a>
+      </li>
+
+    </ul>
+
+    <div class="form-group search row">
+      <div class="input-group input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-search"></i>
+        </span>
+        <input class="form-control" ng-keyup="$event.keyCode == 13 && dashboard.submitSearch(dashboard.searchTerm)" ng-model="dashboard.searchTerm" placeholder="Search" type="text">
+      </div>
+    </div>
+
+    <ul class="spotlights row">
+      <li class="spotlight" ui-sref="tracking({statusIs:'undelivered'})">
+        <div class="bignum">179</div>&nbsp;
+        <div>Undelivered</div>
+      </li>
+      <li class="spotlight" ui-sref="tracking({statusIs:'delivered'})">
+        <div class="bignum">4</div>&nbsp;
+        <div>Delivered today</div>
+      </li>
+      <li class="spotlight" ui-sref="tracking({statusIs:'received'})">
+        <div class="bignum">183</div>&nbsp;
+        <div>Received today</div>
+      </li>
+    </ul>
+
+    <ul class="widgets row">
+      <li class="widget">
+        <p>Packages delivered
+          <br>per employee</p><img  alt="" src="modules/dashboard/assets/img/chart1.png"/></li>
+      <li class="widget">
+        <p>On-time delivery each month</p><img  alt="" src="modules/dashboard/assets/img/chart2.png"/></li>
+      <li class="widget">
+        <p>Packages by carrier today
+        </p><img  alt="" src="modules/dashboard/assets/img/chart3.png"/></li>
+    </ul>
+
+  </div>
+
+</div>
