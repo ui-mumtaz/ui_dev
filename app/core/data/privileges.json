@@ -1,0 +1,100 @@
+[
+  {
+    "label": "Ship to international address",
+    "enabled": true,
+    "selected": true
+  },
+  {
+    "label": "Carriers Permitted",
+    "enabled": false,
+    "selected": true,
+    "options": [
+      {
+        "label": "USPS All Services",
+        "value": true,
+        "details": [
+          {
+            "label": "Priority Mail Express",
+            "value": true
+          },
+          {
+            "label": "Extra Services",
+            "value": true
+          }
+        ]
+      },
+      {
+        "label": "FedEx All Services",
+        "value": true,
+        "details": [
+          {
+            "label": "SameDay",
+            "value": true
+          },
+          {
+            "label": "Overnight",
+            "value": true
+          },
+          {
+            "label": "2Day",
+            "value": true
+          },
+          {
+            "label": "Extra Services",
+            "value": true
+          }
+        ]
+      },
+      {
+        "label": "UPS All Services",
+        "value": "false",
+        "details": [
+          {
+            "label": "Express Critical",
+            "value": true
+          },
+          {
+            "label": "Next Day Air",
+            "value": true
+          },
+          {
+            "label": "2nd Day Air",
+            "value": false
+          },
+          {
+            "label": "Extra Services",
+            "value": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Ship without spending limit",
+    "enabled": true,
+    "selected": true
+  },
+  {
+    "label": "Additional",
+    "enabled": true,
+    "selected": true,
+    "options": [
+      {
+        "label": "View USPS postage balance",
+        "value": false
+      },
+      {
+        "label": "Add USPS postage",
+        "value": false
+      },
+      {
+        "label": "Manage Cost Accounts",
+        "value": false
+      },
+      {
+        "label": "Buy supplies via Horizon",
+        "value": false
+      }
+    ]
+  }
+]

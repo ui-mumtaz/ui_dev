@@ -1,0 +1,135 @@
+[
+  {
+    "label": "Ship to international address",
+    "enabled": true,
+    "selected": true
+  },
+  {
+    "label": "Carriers Permitted",
+    "enabled": true,
+    "selected": true,
+    "options": [
+      {
+        "label": "USPS All Services",
+        "value": true,
+        "details": [
+          {
+            "label": "Priority Mail Express",
+            "value": true
+          },
+          {
+            "label": "Extra Services",
+            "value": true
+          }
+        ]
+      },
+      {
+        "label": "FedEx All Services",
+        "value": true,
+        "details": [
+          {
+            "label": "SameDay",
+            "value": true
+          },
+          {
+            "label": "Overnight",
+            "value": true
+          },
+          {
+            "label": "2Day",
+            "value": true
+          },
+          {
+            "label": "Extra Services",
+            "value": true
+          }
+        ]
+      },
+      {
+        "label": "UPS All Services",
+        "value": "true",
+        "details": [
+          {
+            "label": "Express Critical",
+            "value": true
+          },
+          {
+            "label": "Next Day Air",
+            "value": true
+          },
+          {
+            "label": "2nd Day Air",
+            "value": true
+          },
+          {
+            "label": "Extra Services",
+            "value": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Ship without spending limit",
+    "enabled": true,
+    "selected": true
+  },
+  {
+    "label": "Postage Management Permissions",
+    "enabled": true,
+    "selected": true,
+    "options": [
+      {
+        "label": "View USPS postage balance",
+        "value": true
+      },
+      {
+        "label": "Add USPS postage",
+        "value": true
+      },
+      {
+        "label": "Set up USPS Auto Postage Refill",
+        "value": true
+      }
+    ]
+  },
+  {
+    "label": "Account Management Permissions",
+    "enabled": true,
+    "selected": true,
+    "options": [
+      {
+        "label": "Manage users & roles",
+        "value": true
+      },
+      {
+        "label": "Manage Cost Accounts",
+        "value": true
+      },
+      {
+        "label": "Manage postage payment method",
+        "value": true
+      },
+      {
+        "label": "Manage Horizon subscription",
+        "value": true
+      },
+      {
+        "label": "Access PB My Account fom Horizon",
+        "value": true
+      },
+      {
+        "label": "Create user-based transaction reports",
+        "value": true
+      },
+      {
+        "label": "Create enterprise summary reports",
+        "value": true
+      },
+      {
+        "label": "Buy supplies via Horizon",
+        "value": true
+      }
+    ]
+  }
+]

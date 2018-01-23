@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "label": "Austin office",
+        "value": "Austin office",
+        "selected": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget dui quis risus venenatis blandit."
+    },
+    {
+      "id": 2,
+        "label": "Boston office",
+        "value": "Boston office",
+        "selected": false,
+        "description": "Cras congue sapien ut erat faucibus, eget accumsan orci condimentum. Praesent at rhoncus nisl. Vivamus ac sem sit amet magna."
+    },
+    {
+      "id": 3,
+        "label": "New York office",
+        "value": "New York office",
+        "selected": false,
+        "description": "Fusce maximus nunc gravida mattis imperdiet. Cras convallis bibendum lectus volutpat lobortis. Sed commodo justo urna, et laoreet sem volutpat."
+    },
+    {
+      "id": 4,
+        "label": "Home-based",
+        "value": "Home-based",
+        "selected": false,
+        "description": "Nam mollis justo lectus, sed sagittis sapien rutrum a. Mauris gravida enim nec dolor egestas pellentesque. Praesent varius sagittis erat."
+    },
+    {
+      "id": 5,
+        "label": "Mac",
+        "value": "Mac",
+        "selected": false,
+        "description": "Nam gravida, elit non euismod viverra, sem felis dignissim nunc, in dictum ex libero at orci. Fusce nec nunc vitae."
+    },
+    {
+      "id": 6,
+        "label": "Windows",
+        "value": "Windows",
+        "selected": false,
+        "description": "Integer ut neque hendrerit massa finibus vestibulum at vitae purus. Praesent eu ligula felis. Aenean cursus facilisis nisi. Ut ultricies."
+    }
+]

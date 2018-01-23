@@ -1,0 +1,200 @@
+{
+  "countries": [
+    {
+      "name": "Australia",
+      "value": "AU",
+      "languages": [
+        {
+          "name": "English",
+          "value": "en"
+        }
+      ]
+    },
+    {
+      "name": "Brasil",
+      "value": "BR",
+      "languages": [
+        {
+          "name": "Português",
+          "value": "pt"
+        }
+      ]
+    },
+    {
+      "name": "Canada",
+      "value": "CA",
+      "languages": [
+        {
+          "name": "English",
+          "value": "en"
+        },
+        {
+          "name": "Français",
+          "value": "fr"
+        }
+      ]
+    },
+    {
+      "name": "France",
+      "value": "FR",
+      "languages": [
+        {
+          "name": "Français",
+          "value": "fr"
+        }
+      ]
+    },
+    {
+      "name": "Deutschland",
+      "value": "DE",
+      "languages": [
+        {
+          "name": "Deutsch",
+          "value": "de"
+        }
+      ]
+    },
+    {
+      "name": "भारत",
+      "value": "IN",
+      "languages": [
+        {
+          "name": "English",
+          "value": "en"
+        },
+        {
+          "name": "বাংলা",
+          "value": "bn"
+        },
+        {
+          "name": "हिंदी",
+          "value": "hi"
+        },
+        {
+          "name": "മലയാളം",
+          "value": "ml"
+        },
+        {
+          "name": "ਪੰਜਾਬੀ",
+          "value": "pa"
+        },
+        {
+          "name": "தமிழ்",
+          "value": "ta"
+        },
+        {
+          "name": "తెలుగు",
+          "value": "te"
+        },
+        {
+          "name": "اُردُو",
+          "value": "ur",
+          "rtl": true
+        }
+      ]
+    },
+    {
+      "name": "מְדִינַת יִשְׂרָאֵל",
+      "value": "IL",
+      "languages": [
+        {
+          "name": "עִבְרִית",
+          "value": "he",
+          "rtl": true
+        }
+      ]
+    },
+    {
+      "name": "Italia",
+      "value": "IT",
+      "languages": [
+        {
+          "name": "Italiano",
+          "value": "it"
+        }
+      ]
+    },
+    {
+      "name": "日本",
+      "value": "JP",
+      "languages": [
+        {
+          "name": "日本語",
+          "value": "ja"
+        }
+      ]
+    },
+    {
+      "name": "Norge",
+      "value": "NO",
+      "languages": [
+        {
+          "name": "Bokmål",
+          "value": "nb"
+        },
+        {
+          "name": "Nynorsk",
+          "value": "nn"
+        }
+      ]
+    },
+    {
+      "name": "Polska",
+      "value": "PL",
+      "languages": [
+        {
+          "name": "Polski",
+          "value": "pl"
+        }
+      ]
+    },
+    {
+      "name": "Российская Федерация",
+      "value": "RU",
+      "languages": [
+        {
+          "name": "Русский",
+          "value": "ru"
+        }
+      ]
+    },
+    {
+      "name": "Sverige",
+      "value": "SE",
+      "languages": [
+        {
+          "name": "Svenska",
+          "value": "sv"
+        }
+      ]
+    },
+    {
+      "name": "United States",
+      "value": "US",
+      "languages": [
+        {
+          "name": "English",
+          "value": "en"
+        },
+        {
+          "name": "Español",
+          "value": "es"
+        }
+      ]
+    },
+    {
+      "name": "United Kingdom",
+      "value": "GB",
+      "languages": [
+        {
+          "name": "English",
+          "value": "en"
+        },
+        {
+          "name": "Cymraeg",
+          "value": "cy"
+        }
+      ]
+    }
+  ]
+}

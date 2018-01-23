@@ -1,0 +1,21 @@
+<div id="tour">
+  <div class="modal-body">
+    <carousel interval="myInterval">
+      <slide active="slide.active" ng-repeat="slide in slides">
+        <img ng-src="{{slide.image}}" style="margin:auto;">
+        <div class="carousel-caption">
+<!-- <h4>Slide {{$index}}</h4> -->
+<!-- <p>{{slide.text}}</p> -->
+        </div>
+      </slide>
+    </carousel>
+
+  </div>
+  <div class="modal-footer">
+
+    <div class="buttons pull-right">
+      <a href="#">Skip tour</a>
+      <a class="btn btn-primary" href="" ng-click="next()" ng-show="slides.length > 1">Next</a>
+    </div>
+  </div>
+</div>

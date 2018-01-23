@@ -1,0 +1,37 @@
+{
+  "roles": [ {
+    "id": 1,
+    "name": "Reviewer",
+    "selected": false,
+    "description": "Modify restrictions",
+    "userLimit": 10,
+    "users": [
+      {"id": "10", "name": "Stephanie Shutte"}
+    ]
+  }, {
+    "id": 2,
+    "name": "Admin",
+    "selected": false,
+    "description": "Manage all users",
+    "userLimit": 10,
+    "users": [
+      {"id": "11", "name": "Caitlin Smith"},
+      {"id": "18", "name": "Ricardo Rios"}
+    ]
+  }, {
+    "id": 3,
+    "name": "User",
+    "selected": false,
+    "description": "View orders",
+    "userLimit": 10,
+    "users": [
+      {"id": "12", "name": "Abby Bowen"},
+      {"id": "13", "name": "Art Vine"},
+      {"id": "14", "name": "Bob Stevens"},
+      {"id": "15", "name": "Caryn McCormach"},
+      {"id": "16", "name": "Eli English"},
+      {"id": "17", "name": "Harry Su"},
+      {"id": "19", "name": "Herman Wolf"}
+    ]
+  }]
+}

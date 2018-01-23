@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <h3 class="modal-title">Feedback</h3>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <label>Please rate your experience</label>&nbsp;&nbsp;
+    <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+
+  </div>
+  <div class="form-group">
+    <label>Comments</label>
+    <textarea class="form-control" rows="3" ng-model="comment"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>Email (optional)</label>
+    <input type="text" class="form-control" ng-model="email">
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="ok()">Send</button>
+</div>
