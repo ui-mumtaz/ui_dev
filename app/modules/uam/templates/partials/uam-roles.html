@@ -1,0 +1,42 @@
+<div class="row toolbar">
+      <div class="col-md-6">
+        <div class="btn-group" role="group">
+        <button tooltip="Add Role" class="btn btn-default btn-sm" ng-click="users.addNewRole()"><i class="fa fa-fw fa-plus"></i></button>
+        <button tooltip="Duplicate Role"   class="btn btn-default btn-sm" xxxng-show="users.rolesTab.selected.length === 1"><i class="fa fa-fw fa-copy"></i></button>
+        <button tooltip="Delete Role" class="btn btn-default btn-sm" xxxng-show="users.rolesTab.selected.length"><i class="fa fa-fw fa-trash"></i></button>
+      </div>
+
+      </div>
+      <div class="col-md-3 col-md-offset-3" text-right>
+        <!-- search -->
+        <div class="form-group">
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input class="form-control" type="text" placeholder="Search">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="row miller-columns miller-columns-plain" id="manageUsers-table">
+      <!-- left -->
+      <div class="miller-columns-plain-col left">
+        <div class="list-group">
+          <a class="list-group-item" ng-class="{active: role.active}"
+            ng-click="users.switchRole($index)" ng-repeat="role in users.shortRolesList"><span>{{role.label}}</span></a>
+          <!-- <a class="list-group-item" ng-repeat="role in users.shortRolesList" ui-sref-active="active" ui-sref="{{role.value}}" href="">{{role.label}}</a> -->
+        </div>
+      </div>
+      <!-- right -->
+      <div class="miller-columns-plain-col right">
+        <div ng-include="users.activeTabPath"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>

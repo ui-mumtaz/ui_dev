@@ -1,0 +1,65 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="groupadd.close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <h4 class="modal-title">Add Group</h4>
+</div>
+<div class="modal-body">
+  <form action="">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Group</label>
+          <input type="text" name="username" id="username" value="" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea name="description" id="description" class="form-control" cols="30" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Users assigned to this  group</label>
+          <!-- <textarea name="" id="" cols="30" rows="4" class="form-control"></textarea> -->
+          <input type="text" selectize="usersSelect.options" options="users" ng-model="users.selected" />
+        </div>
+      </div>
+    </div>
+    <fieldset>
+      <legend>Partners: Merchants</legend>
+      <div class="row toolbar" ng-show="chosenPartnersMerchants.length">
+        <div class="col-md-6">
+          <a href="" tooltip="Edit Partner:Merchant" class="btn btn-default btn-xs" ng-disabled="((chosenPartnersMerchants | filter: pair.selected != true).length != 1)"><i class="fa fa-fw fa-pencil"></i></a>
+          <a href="" tooltip="Delete Partner:Merchant" data-toggle="modal" data-target="#deleteUsers" class="btn btn-default btn-xs" ng-disabled="((chosenPartnersMerchants | filter: pair.selected != true).length != 1)"><i class="fa fa-fw fa-trash"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9">
+          <table class="table">
+            <thead>
+              <tr>
+                <th width="20">&nbsp;</th>
+                <th>Partners</th>
+                <th>Merchants</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="pair in chosenPartnersMerchants" ng-show="chosenPartnersMerchants.length" class="animated fadeIn">
+                <td>
+                  <input type="checkbox" ng-model="pair.selected">
+                </td>
+                <td>{{pair.p}}</td>
+                <td><span ng-repeat="m in pair.m">{{m.name}}{{$last ? ' ' : ', '}} </span></td>
+              </tr>
+              <tr ng-hide="chosenPartnersMerchants.length" ng-class="animated fadeOut">
+                <td colspan="3">No partners have been selected.</td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="" ng-click="resetPartnerMerchant()">Add a partner</a>
+
+        </div>
+      </div>
+    </fieldset>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" ng-click="groupadd.close()">Create Group</button>
+    </div>
+  </form>

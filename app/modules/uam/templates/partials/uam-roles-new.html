@@ -1,0 +1,83 @@
+<div class="row">
+  <!--Form shown only for new role being added-->
+  <div class="col-md-6">
+    <form class="form-inline pull-left">
+      <div class="form-group">
+        <input class="form-control inline-edit title" type="text" id="role-title" value="Untitled Role">
+      </div>
+    </form>
+  </div>
+  <div class="col-md-6"></div>
+</div>
+<div class="row spacer-top-md">
+  <!--Members(0) will be shown when adding a new role-->
+  <div class="col-md-12">
+    <h5>Members (0)</h5>
+    <p><!-- <span
+      ng-repeat="user in users.users | orderBy: 'full_name' | limitTo:
+      users.userLimit as shownItems">{{user.full_name}}{{$last ? ' - ' : ', '}}
+      </span>
+      <span class="show-hide" ng-click="users.userLimit = users.users.length"
+        ng-show="shownItems.length === 10">
+        And {{users.users.length-shownItems.length}} others</span>
+      <span class="show-hide" ng-click="users.userLimit = 10"
+        ng-show="(shownItems.length !== 10)">Show
+        less</span> -->
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="inner-column spacer-top-md">
+      <div class="list-group">
+        <a class="list-group-item" href="" ng-class="{open : showShippingDetails }"
+          ng-click="showShippingDetails = !showShippingDetails">Shipping
+          Permissions</a>
+        <div class="permission-details" ng-show="showShippingDetails">
+          <!-- the gray row -->
+          <div ng-repeat="priv in users.privileges | limitTo: 3 ">
+            <!-- except here we really don't need the major headers -->
+            <div class="privilege-list" ng-class="{title: !priv.enabled}">
+              <span class="label-cb">{{priv.label}}
+                <span class="cb"><input ng-if="priv.enabled" ng-model="priv.value" type="checkbox"></span></span>
+            </div>
+            <!-- the nested rows, with the rules -->
+            <div ng-repeat="o in priv.options">
+              <div class="privilege-list-options"><span class="label-cb">{{o.label}}
+                  <span class="cb"><input ng-model="o.value" type="checkbox"></span></span>
+              </div>
+              <div ng-repeat="d in o.details">
+                <div class="privilege-list-details"><span class="label-cb">{{d.label}}
+                    <span class="cb"><input ng-model="d.value" type="checkbox"></span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="list-group-item" href="" ng-class="{open : showAddlDetails }"
+          ng-click="showAddlDetails = !showAddlDetails">Additional
+          Permissions</a>
+        <div class="permission-details" ng-show="showAddlDetails">
+          <!-- the gray row -->
+          <div ng-repeat="priv in users.privileges | limitTo: -1 ">
+            <!-- except here we really don't need the major headers -->
+            <!-- <div class="privilege-list" ng-class="{disabled: !priv.enabled}">
+                        <input type="checkbox" ng-model="priv.selected">&nbsp;{{priv.label | uppercase}}
+                      </div> -->
+            <!-- the nested rows, with the rules -->
+            <div ng-repeat="o in priv.options">
+              <div class="privilege-list-options"><span class="label-cb">{{o.label}}
+                  <span class="cb"><input ng-model="o.value" type="checkbox"></span></span>
+              </div>
+              <div ng-repeat="d in o.details">
+                <div class="privilege-list-details"><span class="label-cb">{{d.label}}
+                    <span class="cb"><input ng-model="d.value" type="checkbox"></span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

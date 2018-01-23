@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <button class="close" ng-click="invite.buyDialog.close()" type="button"><span aria-hidden="true">&times;</span>
+    <span class="sr-only">Close</span></button>
+  <h3 class="modal-title">Buy Seats</h3>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <input type="number" class="form-control">
+      </div>
+    </div>
+    <div class="col-md-4">
+      $xxx.xx per user
+    </div>
+  </div>
+  <p>You'll be charged $xxx.xx for [n] additional seats prorated for the current billing period. Your new total will be $x,xxx.xx per year for all [n] licenses going forward. These charges will be applied at your next billing date on [date].</p>
+
+  <p>Card **** **** **** 1234&nbsp;&nbsp;<a href="">Change</a>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="buyseats.buyDialog.buySeats()">Buy Seats</button>
+</div>

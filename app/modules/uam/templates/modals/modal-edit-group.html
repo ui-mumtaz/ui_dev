@@ -1,0 +1,48 @@
+<div class="modal-header">
+  <button class="close" ng-click="groupedit.modal.close()" type="button"><span aria-hidden="true">&times;</span>
+    <span class="sr-only">Close</span></button>
+  <h4 class="modal-title">Edit Group</h4>
+</div>
+<form action="" ng-if="!groupedit.deletePrompt">
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Name</label>
+          <input class="form-control" id="username" name="username" type="text" value=""
+            value="Austin Office"></div>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-md-12">
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" cols="30" id="description" name="description"
+            rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Users assigned to this group</label>
+          <input ng-model="users.selected" options="users" selectize="usersSelect.options"
+            type="text"/>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="groupedit.modal.close()" type="button">Save</button>
+    <button class="btn btn-danger" ng-click="groupedit.modal.delete()" type="button">Delete Group</button>
+    <button class="btn btn-link" ng-click="groupedit.modal.close()" type="button">Cancel</button>
+  </div>
+</form>
+
+<form  ng-if="groupedit.deletePrompt">
+  <div class="modal-body">
+      <p>
+        Are you sure you want to delete the group [group name]? This cannot be undone.
+      </p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-danger" ng-click="groupedit.modal.delete()" type="button">Delete</button>
+    <button class="btn btn-link" ng-click="groupedit.modal.close()" type="button">Cancel</button>
+  </div>
+</form>

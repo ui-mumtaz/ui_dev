@@ -1,0 +1,232 @@
+<div class="container">
+  <div class="row top-header spacer-top-md">
+    <div class="col-md-12">
+      <h1>Users</h1>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="col-md-12">
+      <div class="promo-boxes">
+        <div class="promo-box text-center">
+          <div class="panel panel-default seat-status">
+            <div class="panel-body text-center">
+              <div class="big-number">11</div>
+              <div class="caption">Active seats</div>
+            </div>
+          </div>
+          <div class="action-link"><a href=""><i class="fa fa-fw fa-envelope"></i> Invite</a></div>
+        </div>
+        <div class="promo-box">
+          <div class="panel panel-default seat-status">
+            <div class="panel-body text-center">
+              <div class="big-number">9</div>
+              <div class="caption">Seats remaining</div>
+            </div>
+          </div>
+          <div class="action-link"><a href="">Buy more seats</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div> -->
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Tab panes -->
+      <tabset>
+        <tab heading="Users">
+          <!-- TAB 1 begin -->
+
+          <div class="row toolbar">
+            <div class="col-md-6">
+              <!-- control buttons might go here -->
+              <ul class="list-inline list-buyseats">
+                <li><a href="" ng-click="users.modals.inviteUser()"><i class="fa fa-fw fa-envelope"></i> Invite</a></li>
+                <li>9 seats active</li>
+                <li>11 seats remaining</li>
+                <li><a href="" ng-click="users.modals.buySeats()">Buy more seats</a></li>
+
+              </ul>
+            </div>
+
+            <div class="col-md-3 text-right text-left-xs">
+              <div class="form-group">
+                  <!-- Single button -->
+                  <div class="btn-group" dropdown is-open="group.isopen">
+                    <button type="button" class="btn  dropdown-toggle" dropdown-toggle>
+                      {{users.group.dropdownLabel}}&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li ng-repeat="group in users.groupMenu">
+                        <a ng-click="users.group.dropdownChange(group)">{{group.label}}</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- <select ng-model="users.userFilter.group" ng-options="t.value as t.label for t in users.groupMenu" class="form-control input-sm"></select> -->
+                  <!-- Single button -->
+                  <div class="btn-group" dropdown is-open="status.isopen">
+                    <button type="button" class="btn dropdown-toggle" dropdown-toggle>
+                  {{users.status.dropdownLabel}}&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li ng-repeat="s in users.statusMenu">
+                        <a ng-click="users.status.dropdownChange(s)">{{s.label}}</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- <select ng-model="users.userFilter.status" ng-options="s.val as s.label for s in users.statusMenu" class="form-control input-sm"></select> -->
+
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <!-- search -->
+              <div class="form-group">
+                <div class="input-group input-group-sm">
+                  <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                  <input class="form-control" type="text" ng-model="users.userFilter.$" placeholder="Search">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table">
+                <thead>
+                  <tr>
+
+                    <th class="icon-column" width="10">
+                       &nbsp;
+                    </th>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Group</th>
+                    <th>Status</th>
+                    <th width="10">&nbsp;</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="user in users.users | filter:(users.userFilter || undefined) | orderBy: 'last_name'" xxx-ng-click="$event.originalEvent.dropdown || users.modals.editUser(user.id)">
+                    <!-- <td>
+                      <input type="checkbox" value="" ng-model="user.selected">
+                    </td> -->
+                    <td ng-switch on="user.role_type" ng-class="{inactive: user.status=='Inactive'}">
+                      <i ng-switch-when="Admin" class="fa fa-plus"></i>
+                      <i ng-switch-default class="fa fa-user"></i>
+                    </td>
+                    <td ng-switch on="user.status">
+                      <span ng-switch-when="Invited"><a href="" ng-click="users.modals.reinviteUser()">Invited User</a></span>
+                      <span ng-switch-default><a href="" ng-click="users.modals.editUser(user.id)">{{user.full_name}}</a></span>
+                      <!-- <span ng-if="user.role_type == 'Admin'"> (Admin.)</span> -->
+                    </td>
+                    <td>
+                      {{user.email}}
+                    </td>
+                    <td>
+                      {{user.role_type}}
+                    </td>
+                    <td>
+                      {{user.group}}
+                    </td>
+                    <td>
+                      {{user.status}}
+                    </td>
+
+                    <td width="10">
+
+                      <div class="btn-group">
+                        <div ng-switch on="user.status">
+                          <button class="btn btn-link btn-gear dropdown-toggle" type="button" data-toggle="dropdown" ng-click="$event.originalEvent.dropdown = true"><i class="fa fa-cog"></i></button>
+
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu" ng-switch-when="Inactive">
+                              <li><a href="" ng-click="users.modals.deleteUser()">Delete</a></li>
+                            </ul>
+
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu" ng-switch-when="Invited">
+                              <li><a href="" ng-click="users.modals.reinviteUser('resend')">Resend invitation</a></li>
+                              <li><a href="" ng-click="users.modals.editUser(user.id)">Edit</a></li>
+                              <li><a href="" ng-click="users.modals.deleteUser()">Delete</a></li>
+                            </ul>
+
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu" ng-switch-default>
+                              <li><a href="" ng-click="users.toast.sentPassword()">Reset password</a></li>
+                              <li><a href="" ng-click="users.modals.editUser(user.id)">Edit</a></li>
+                              <li><a href="" ng-click="users.modals.deleteUser()">Delete</a></li>
+                            </ul>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+          </div>
+        </div>
+        </tab>
+        <!-- end tab 1 -->
+
+
+
+        <tab heading="Roles &amp; Permissions">
+        <!--tab 2 -->
+        <div ng-include="'modules/uam/templates/partials/uam-roles.html'"></div>
+        <!-- end tab 2 -->
+        </tab>
+        <tab heading="Groups">
+          <!-- tab 3 -->
+          <div class="row toolbar">
+            <div class="col-md-6">
+              <div class="btn-group" role="group">
+                <button tooltip="Add Group"    class="btn btn-default btn-sm" ng-click="users.modals.addGroup()"><i class="fa fa-fw fa-plus"></i></button>
+                <button tooltip="Edit Group"   class="btn btn-default btn-sm" ng-show="users.group.selected.length === 1"><i class="fa fa-fw fa-pencil"></i></button>
+                <button tooltip="Delete Group" class="btn btn-default btn-sm" ng-show="users.group.selected.length"><i class="fa fa-fw fa-trash"></i></button>
+            </div>
+            </div>
+            <div class="col-md-3 col-md-offset-3" text-right>
+              <!-- search -->
+              <div class="form-group">
+                <div class="input-group input-group-sm">
+                  <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                  <input class="form-control" type="text" xxx-ng-model="users.userFilter.$" placeholder="Search">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <!-- <th class="cb-column" width="10">
+                      <input type="checkbox" ng-model="users.group.allSelected" ng-click="users.group.allClick()" ng-checked="users.group.allChecked()">
+                      </th> -->
+                    <th>Group</th>
+                    <!-- <th>Description</th> -->
+
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <!-- <tr ng-repeat="user in users.users | unique:'group'"> -->
+                  <tr ng-repeat="group in users.groups" ng-click="users.modals.editGroup()">
+                    <!-- <td><input type="checkbox" value="" ng-click="users.group.selectItem(group.id)" ng-model="group.selected"></td> -->
+                    <td><a href="" ng-click="users.modals.editGroup()">{{group.label}}</a></td>
+                    <!-- <td>{{group.description}}</td> -->
+
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+          <!-- end tab 2 -->
+        </tab>
+
+      </tabset>
+    </div>
+  </div>
+</div>

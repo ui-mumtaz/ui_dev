@@ -1,0 +1,53 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="useredit.close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <h4 class="modal-title">Howard Bishop</h4>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Role</label>
+        <select ng-model="useredit.userRole" ng-options="s.label for s in useredit.roleMenu" class="form-control input-sm"></select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Status</label>
+        <br>
+        <!-- <select ng-model="useredit.userStatus" ng-options="s.label for s in useredit.statusMenu track by s.val" class="form-control input-sm"></select> -->
+        <div toggle-switch ng-model="useredit.activeuser" on-label="Active" off-label="Inactive"></div>
+      </div>
+    </div>
+    <!-- <div class="col-md-3">
+      <div class="form-group inline-radios">
+        <label for="rb4" class="checkbox-inline" ng-show="useredit.activeuser">
+          <input type="checkbox" ng-model="useredit.deactivation">Deactivation date</label>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group" ng-show="useredit.activeuser">
+        <label>Date</label>
+        <p class="input-group">
+          <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+          <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </p>
+      </div>
+    </div> -->
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Group(s)</label>
+        <input type="text" selectize="useredit.config" options="useredit.suggestions" ng-model="useredit.selected" />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" ng-click="useredit.close()">OK</button>
+
+</div>

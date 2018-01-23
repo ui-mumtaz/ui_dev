@@ -1,0 +1,249 @@
+<div class="container-fluid">
+  <div class="row top-header spacer-bottom-md spacer-top-lg">
+    <div class="col-md-12">
+      <h1>User Management</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <div class="promo-boxes">
+        <div class="promo-box text-center">
+          <div class="panel panel-default seat-status">
+            <div class="panel-body text-center">
+              <div class="big-number">11</div>
+              <div class="caption">Active seats</div>
+            </div>
+          </div>
+          <div class="action-link"><a href=""><i class="fa fa-fw fa-envelope"></i> Invite</a></div>
+        </div>
+        <div class="promo-box">
+          <div class="panel panel-default seat-status">
+            <div class="panel-body text-center">
+              <div class="big-number">9</div>
+              <div class="caption">Seats remaining</div>
+            </div>
+          </div>
+          <div class="action-link"><a href="">Buy more seats</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Tab panes -->
+      <tabset>
+        <tab heading="Users">
+          <!-- TAB 1 begin -->
+          <div class="row">
+            <div class="col-md-5">
+            </div>
+            <div class="col-md-4 text-right">
+              <div class="form-group">
+                  <!-- Single button -->
+                  <div class="btn-group" dropdown is-open="group.isopen">
+                    <button type="button" class="btn  dropdown-toggle" dropdown-toggle>
+                      {{users.group.dropdownLabel}}&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li ng-repeat="group in users.groupMenu">
+                        <a ng-click="users.group.dropdownChange(group)">{{group.label}}</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- <select ng-model="users.userFilter.group" ng-options="t.value as t.label for t in users.groupMenu" class="form-control input-sm"></select> -->
+                  <!-- Single button -->
+                  <div class="btn-group" dropdown is-open="status.isopen">
+                    <button type="button" class="btn dropdown-toggle" dropdown-toggle>
+                  {{users.status.dropdownLabel}}&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li ng-repeat="s in users.statusMenu">
+                        <a ng-click="users.status.dropdownChange(s)">{{s.label}}</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- <select ng-model="users.userFilter.status" ng-options="s.val as s.label for s in users.statusMenu" class="form-control input-sm"></select> -->
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <div class="input-group input-group-sm">
+                  <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                  <input class="form-control" type="text" ng-model="users.userFilter.$" placeholder="Search">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="cb-column" width="10">
+                      </th>
+                      <th class="icon-column" width="10">
+                        <i class="fa fa-user"></i>
+                      </th>
+                      <th>User</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Group</th>
+                      <th>Status</th>
+                      <th width="10">&nbsp;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- ACTION ROW -->
+                    <tr ng-repeat-start="user in users.users | filter:(users.userFilter || undefined) | orderBy: 'last_name'" ng-click="$event.originalEvent.dropdown || (showDetails = !showDetails)" class="expander">
+                      <td>
+                        <div class="row-arrow" ng-class="{ 'down-arrow' : showDetails }"></div>
+                      </td>
+                      <td ng-switch on="user.role_type" ng-class="{inactive: user.status=='Inactive'}">
+                        <i ng-switch-when="Admin" class="fa fa-plus"></i>
+                        <i ng-switch-default class="fa fa-user"></i>
+                      </td>
+                      <td ng-switch on="user.status">
+                        <span ng-switch-when="Invited"></span>
+                        <span ng-switch-default>{{user.full_name}}</span>
+                        <!-- <span ng-if="user.role_type == 'Admin'"> (Admin.)</span> -->
+                      </td>
+                      <td>
+                        {{user.email}}
+                      </td>
+                      <td>
+                        <span ng-hide="showDetails">{{user.role_type}}</span>
+                      </td>
+                      <td>
+                        <span ng-hide="showDetails">{{user.group}}</span>
+                      </td>
+                      <td>
+                        <span ng-hide="showDetails">{{user.status}}</span>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <div ng-switch on="user.status">
+                            <button class="btn btn-link btn-gear dropdown-toggle" type="button" ng-click="$event.originalEvent.dropdown = true" data-toggle="dropdown"><i class="fa fa-cog"></i></button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu" ng-switch-when="Inactive">
+                              <li><a href="" ng-click="users.modals.deleteUser()">Delete</a></li>
+                            </ul>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu" ng-switch-when="Invited">
+                              <li><a href="" ng-click="users.toast.resendInvite()">Resend invitation</a></li>
+                              <li><a href="" ng-click="users.modals.deleteUser()">Delete</a></li>
+                            </ul>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu" ng-switch-default>
+                              <li><a href="" ng-click="users.toast.sentPassword()">Reset password</a></li>
+                              <li><a href="" ng-click="users.modals.deleteUser()">Delete</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- DETAIL ROW -->
+                    <tr class="row-details expanded" ng-show="showDetails" ng-class="{ 'active': showDetails }">
+                      <td>&nbsp;</td>
+                      <td colspan="7">
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="form-group">
+                              <label>Status</label>
+                              <select ng-model="users.userStatus" ng-options="s.label for s in users.statusMenu track by s.val" class="form-control input-sm"></select>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="form-group inline-radios">
+                              <label for="rb4" class="checkbox-inline" ng-show="users.userStatus.val == 'Active'">
+                                <input type="checkbox" ng-model="users.deactivation">Deactivation date</label>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="form-group" ng-show="users.deactivation">
+                              <label>Date</label>
+                              <p class="input-group input-group-sm">
+                                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                              </span>
+                              </p>
+                            </div>
+                          </div>
+                          <div class="col-md-2 col-md-offset-4">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="form-group">
+                              <label>Role</label>
+                              <select ng-model="users.userRole" ng-options="s.label for s in users.roleMenu" class="form-control input-sm"></select>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label>Group(s)</label>
+                              <input type="text" selectize="users.multiGroupSelect.options" options="users.multiGroupSelect.countries" ng-model="users.multiGroupSelect.selected" />
+                            </div>
+                          </div>
+                          <div class="col-md-2 col-md-offset-2">
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr ng-repeat-end></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </tab>
+        <tab heading="Roles &amp; Permissions">
+          <!-- to come -->coming soon
+        </tab>
+        <tab heading="Groups">
+          <!-- tab 2 -->
+          <div class="row toolbar">
+            <div class="col-md-6">
+              <a href="" class="btn btn-link" tooltip="Create Group" ng-click="users.modals.addGroup()"><i class="fa fa-fw fa-plus"></i>Create Group</a>
+              <a href="" class="btn btn-link" tooltip="Edit Group" ng-disabled="((groupMenu | filter: group.selected != true).length != 1)"><i class="fa fa-fw fa-pencil"></i>Edit Group</a>
+              <a href="" class="btn btn-link" tooltip="Delete Group" ng-disabled="((groupMenu | filter: group.selected != true).length != 1)"><i class="fa fa-fw fa-trash"></i>Delete Group</a> &nbsp;&nbsp;
+            </div>
+            <div class="col-md-3 col-md-offset-3" text-right>
+              <div class="form-group">
+                <div class="input-group input-group-sm">
+                  <input class="form-control" type="text">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default"><i class="fa fa-search"></i></button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th class="cb-column" width="10">
+                      <input type="checkbox" ng-model="users.selectedAll" ng-click="users.checkAll()">
+                    </th>
+                    <th>Group</th>
+                    <!-- <th>Number of members</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- <tr ng-repeat="user in users.users | unique:'group'"> -->
+                  <tr ng-repeat="group in users.groupMenu">
+                    <td>
+                      <input type="checkbox" value="" ng-model="group.selected">
+                    </td>
+                    <td>{{group.label}}</td>
+                    <!-- <td>{{users.groupCount(user.group)}}</td> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- end tab 2 -->
+        </tab>
+      </tabset>
+    </div>
+  </div>
+</div>

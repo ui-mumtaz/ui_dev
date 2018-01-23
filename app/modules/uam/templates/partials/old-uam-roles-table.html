@@ -1,0 +1,39 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="cb-column" width="10">
+        <input type="checkbox" xxx-ng-model="users.rolesTab.allSelected" ng-click="users.rolesTab.allClick()" ng-checked="users.rolesTab.allChecked()">
+
+      </th>
+      <th class="icon-column" width="10">
+        <i class="fa fa-user"></i>
+      </th>
+      <th>Role</th>
+      <!-- <th>Description</th> -->
+      <th>Users</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="r in users.roles | limitTo: 30">
+      <td>
+        <input type="checkbox" value="" ng-model="r.selected" ng-click="users.rolesTab.selectItem(r.id)">
+      </td>
+      <td ng-switch on="r.name">
+        <i ng-switch-when="Admin" class="fa fa-user-plus"></i>
+        <i ng-switch-default class="fa fa-user"></i>
+      </td>
+      <td width="200">
+        <a href="" ng-click="users.modals.editRole()">{{r.name}}</a>
+      </td>
+      <!-- <td width="300">
+        {{r.description}}
+      </td> -->
+      <td>
+        <span ng-repeat="t in shown = (filtered = (users.users | filter: {role: r.name}) | limitTo: r.userLimit | orderBy:'full_name')">{{t.full_name}}{{$last ? ' - ' : ', '}} </span>
+        <span class="show-hide" ng-show="shown.length < filtered.length" ng-click="r.userLimit = users.users.length"> And {{shown.length}} others</span>
+        <span class="show-hide" ng-show="(shown.length === filtered.length)" ng-click="r.userLimit = 10">Show less</span>
+      </td>
+
+    </tr>
+  </tbody>
+</table>

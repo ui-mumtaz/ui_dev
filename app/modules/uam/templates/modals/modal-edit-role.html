@@ -1,0 +1,166 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="roles.close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <h4 class="modal-title">Edit Role</h4>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Role</label>
+        <input type="text" name="role" id="role" value="Bluefly user" class="form-control">
+      </div>
+    </div>
+
+    <div class="col-md-6 col-md-offset-1">
+      <div class="form-group">
+        <label for="desc">Description </label>
+        <textarea name="desc" id="desc" rows="2" class="form-control"></textarea>
+      </div>
+    </div>
+  </div>
+
+<!--   <div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label>Add users to this role</label>
+      <input type="text" selectize="roles.usersSelect.options" options="roles.users" ng-model="roles.users.selected" />
+    </div>
+  </div>
+</div> -->
+
+
+
+  <fieldset>
+    <legend>Permissions</legend>
+    <!-- <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="type">Type</label>
+          <select ng-model="roles.roleType" ng-options="s.name for s in roles.roleTypeMenu track by s.val" class="form-control"></select>
+        </div>
+      </div>
+      <div class="col-md-3">
+      </div>
+    </div> -->
+    <div class="row">
+      <div class="col-md-5">
+        <!-- the gray row -->
+        <div ng-repeat="t in roles.rolePrivileges ">
+          <div class="privilege-list" ng-class="{disabled: !t.enabled}">
+            <input type="checkbox" ng-model="t.selected">&nbsp;{{t.label | uppercase}}
+          </div>
+          <!-- the nested rows, with the rules -->
+          <div ng-repeat="o in t.options">
+            <div class="privilege-list-options"><span class="label-cb">{{o.label}} <span class="cb"><input type="checkbox" ng-model="o.value"></span></span>
+            </div>
+            <div ng-repeat="d in o.details">
+              <div class="privilege-list-details"><span class="label-cb">{{d.label}} <span class="cb"><input type="checkbox" ng-model="d.value"></span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      <!--   <div ng-show="roles.roleType.val == 'Admin'"> -->
+        <div xxx-ng-show="roles.roleType.val == 'Admin'">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="privilege-list">
+                <input type="checkbox" ng-model="roles.editUsersAllowed">&nbsp;USERS</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table user-privileges" ng-hide="!roles.editUsersAllowed" class="animated fadeOut">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>View list
+                      <br>
+                      <input type="checkbox">
+                    </th>
+                    <th>Create
+                      <br>
+                      <input type="checkbox">
+                    </th>
+                    <th>View
+                      <br>
+                      <input type="checkbox">
+                    </th>
+                    <th>Edit
+                      <br>
+                      <input type="checkbox">
+                    </th>
+                    <th>Delete
+                      <br>
+                      <input type="checkbox">
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Users</td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Roles</td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Data access groups</td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                    <td>
+                      <input type="checkbox">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" ng-click="roles.close()">OK</button>
+</div>

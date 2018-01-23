@@ -1,0 +1,15 @@
+<div class="modal-header">
+  <button class="close" ng-click="invite.inviteDialog.close()" type="button"><span aria-hidden="true">&times;</span>
+    <span class="sr-only">Close</span></button>
+  <h3 class="modal-title">Invite User</h3>
+</div>
+<div class="modal-body">
+  <p>To invite users, enter their email address below.</p>
+    <div class="form-group">
+      <input ng-model="invite.users.selected" options="invite.users"
+        selectize="invite.config" type="text"/>
+    </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="invite.inviteDialog.firstInvite()">Invite</button>
+</div>
