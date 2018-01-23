@@ -1,0 +1,10 @@
+{
+  "GLOBAL": {
+    "HEADER": {
+      "NAV": {
+        "DASHBOARD": "Dashboard",
+        "ELEMENTS": "Elements"
+      }
+    }
+  }
+}
