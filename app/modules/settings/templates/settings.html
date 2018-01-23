@@ -1,0 +1,47 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1 translate="SETTINGS.TITLE"></h1>
+    </div>
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-md-5">
+      <div class="form-group">
+        <label>Select Country</label>
+        <select ng-options="c.name for c in settings.languages" ng-model="settings.selectedCountry" class="form-control"></select>
+      </div>
+
+      <div class="form-group" ng-show="settings.selectedCountry.languages.length > 1">
+        <label>Select language</label>
+        <select ng-options="l.name for l in settings.selectedCountry.languages" ng-change="settings.changeLang()" ng-model="settings.selectedLanguage" class="form-control"></select>
+      </div>
+
+      <div>
+        <p>
+          <label>Number format</label>
+          <br/> {{1234567890 | number}}
+          <br/>{{-12992992 | number}}</p>
+        <p>
+          <label>Date format</label>
+          <br/> {{0 | date:'fullDate'}}</p>
+        <p>
+          <label>Time short</label>
+          <br/> {{1288323623006 | date:'shortTime':'UTC'}}</p>
+        <p>
+          <label>Time medium</label>
+          <br/> {{1288323623006 | date:'mediumTime':'UTC'}}</p>
+        <p>
+          <label>Local currency</label>
+          <br/> {{1000000 | currency}}
+          <br/>{{-1000 | currency}}</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
