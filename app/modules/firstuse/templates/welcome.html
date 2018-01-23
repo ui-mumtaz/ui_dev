@@ -1,0 +1,35 @@
+<div class="welcome-container">
+  <div class="intro">
+    <div class="intro-left">
+      <h1>Welcome</h1>
+      <p>Sendsuite Tracking Online tracks the packages<br>you get in each day.</p>
+      <ul>
+        <li>Time delivered</li>
+        <li>Who has the package</li>
+        <li>How many packages you handle daily</li>
+      </ul>
+
+      <p class="take-tour">
+        <a class="tour-link" ng-click="firstuse.showSlides = true" ui-sref="firstuse.slide1">Take a quick tour
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </p>
+      <p class="spacer-top-lg">
+        <button class="btn btn-primary" ng-click="firstuse.showSlides = true" ui-sref="firstuse.conclusion">Get started</button>
+      </p>
+    </div>
+
+    <div class="intro-right">
+      <img alt="" src="modules/firstuse/assets/img/tour_welcome.png"/>
+    </div>
+  </div>
+</div>
+
+<div class="slide-holder pb-animate-fade" ng-show="firstuse.showSlides">
+  <div>
+    <div class="firstuse modal-backdrop fade in"></div>
+    <div class="firstuse-slide-view">
+      <div ui-view></div>
+    </div>
+  </div>
+  </div>

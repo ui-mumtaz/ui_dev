@@ -1,0 +1,154 @@
+.welcome {
+  div[header],
+  div[footer],
+  div[pb-feedback] {
+    display: none;
+  }
+
+
+  p,
+  li {
+    font-size: 18px;
+  }
+
+.take-tour {
+    margin-top: 30px;
+  }
+}
+
+
+.firstuse-welcome-box {
+  width: 900px;
+  height: 100vh;
+  margin: 60px auto;
+}
+
+
+.welcome-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  .intro {
+    display: flex;
+    @include nope(flexbox) {
+        width: 940px;
+        margin: 40px auto;
+      }
+
+    .intro-left {
+      margin-right: 30px;
+      @include nope(flexbox) {
+          float: left;
+          margin-right: 0;
+      }
+    }
+    .intro-right {
+      @include nope(flexbox) {
+          float: right;
+      }
+    }
+  }
+}
+
+
+.modal-backdrop {
+  &.firstuse {
+    z-index: 1040;
+
+    //  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 1) 50%);
+    background: rgba(255, 255, 255, 0.8);
+  }
+}
+
+
+.btn-link {
+  border: 0;
+}
+
+.tour-link {
+  color: #6575b6;
+}
+
+
+.slide-holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include nope(flexbox) {
+      margin-top: 50px;
+  }
+}
+
+
+.firstuse-slide-view {
+  width: 700px;
+  height: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #000;
+  background-color: #fff;
+  position: relative;
+  z-index: 1050;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, .6);
+
+  .button-bar {
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    position: absolute;
+    text-align: right;
+    button {
+      min-width: 80px;
+    }
+  }
+
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+
+  p {
+    text-align: center;
+    margin: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+    font-family: $font-family-sans-serif;
+  }
+  li {
+    font-family: $font-family-sans-serif;
+    margin-bottom: 10px;
+  }
+
+img {
+    margin: 1px auto;
+    display: block;
+  }
+
+
+  .conclusion {
+    h1 {
+      font-size: 30px;
+    }
+
+
+    p {
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.3;
+      margin: 5px 20px 20px;
+    }
+
+
+    a {
+      text-align: center;
+    }
+  }
+}
