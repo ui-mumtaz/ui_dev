@@ -1,0 +1,53 @@
+<!-- for the gradient -->
+<div class="bg"></div>
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-6 col-md-offset-3 col-xs-12 col-xs-offset-0">
+
+      <div class="signin-box">
+        <div class="prod-name">SendSuite<sup>®</sup> Tracking Online</div>
+        <h1>Sign in</h1>
+
+
+        <div class="alert alert-danger animated fadeIn spacer-top-sm" ng-show="login.firstErrorState">
+          <b>Unrecognized email or password.</b> Please try again.
+        </div>
+
+        <form name="loginForm" novalidate class="spacer-top-sm spacer-bottom-sm">
+
+          <div class="row">
+
+            <div class="form-group col-sm-12 col-md-8" ng-class="{'has-error': loginForm.email.$error.required && loginForm.email.$dirty}">
+              <label>Email</label>
+              <input class="form-control" type="text" name="email" ng-model="login.loginData.name" required />
+              <span class="help-block" ng-show="loginForm.email.$error.required && loginForm.email.$dirty">Please enter your email address.</span>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="form-group col-sm-12 col-md-8">
+            <label>Password</label>
+            <input class="form-control" type="password" name="password" ng-model="login.loginData.password" required />
+          </div>
+
+        </div>
+
+          <div class="checkbox"><label for="rememberme"><input type="checkbox" name="rememberme">Remember me</label></div>
+
+          <button class="btn btn-primary btn-lg spacer-top-md" ng-class="{'disabled': loginForm.$invalid}" ng-disabled="loginForm.$invalid" ng-click="login.login()">Sign in</button>
+        </form>
+
+        <p>Forgot <a href="#/forgotpassword">Password?</a></p>
+
+      </div>
+      <!-- // end white box -->
+      <div ng-include="'modules/login/templates/partial.login.footer.html'"></div>
+    </div>
+
+  </div>
+
+</div>

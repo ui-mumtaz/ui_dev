@@ -1,0 +1,27 @@
+<div class="bg"></div>
+<div class="container-fluid">
+  <div class="row">
+     <div class="col-md-6 col-md-offset-3 col-xs-12 col-xs-offset-0">
+      <div class="signin-box">
+        <div class="prod-name">{{productName}}</div>
+      <form name="recoveryForm" class="loginform" novalidate>
+        <h1>Forgot Username</h1>
+        <p class="spacer-top-lg spacer-bottom-md">Enter the email that matches your account.
+          <br>We'll send you an email with your username.</p>
+        <div class="alert alert-danger animated fadeIn" ng-show="fu.isInvalid">
+          That email is not recognized.
+        </div>
+        <div class="alert alert-success animated fadeIn" </form>ng-show="fu.isValid">
+          We sent an email to {{fu.emailAddress}}. You will receive it in a few minutes. If you do not receive the email, check your Spam or Junk folder.
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input class="form-control" type="text" name="email" ng-model="fu.emailAddress" required>
+        </div>
+        <button class="btn btn-primary" ng-click="fu.sendUsername()">Send</button>
+      </form>
+      <p class="spacer-top-md"><a href="#/login">&larr; Return to sign in</a></p>
+    </div>
+    </div>
+  </div>
+</div>
