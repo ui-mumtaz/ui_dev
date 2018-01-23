@@ -1,0 +1,114 @@
+<div id="header">
+  <nav class="navbar yamm navbar-default navbar-fixed-top" pb-fixed-navbar role="navigation">
+    <div class="container-fluid">
+<!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand brand-text" href="" ui-sref="dashboard">SendSuite Tracking Online</a>
+      </div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav" ng-show="app.loggedIn">
+          <li>
+            <a href="" ui-sref="dashboard">Home</a>
+          </li>
+          <li>
+            <a href="" ui-sref="tracking">Packages</a>
+          </li>
+          <li>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">
+              Settings
+              <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="" ui-sref="contacts">Contacts - Recipients &amp; Senders</a>
+              </li>
+              <li>
+                <a href="">Email notifications</a>
+              </li>
+              <li>
+                <a href="" ui-sref="users">Users</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">
+              Help
+              <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <span>
+                  <input placeholder="Search Help" type="text"></span>
+              </li>
+              <li>
+                <a href="">Help on this page</a>
+              </li>
+              <li>
+                <a href="">Search all Help topics</a>
+              </li>
+              <li>
+                <a href="" ui-sref="firstuse.slide1">Take the Getting Started tour</a>
+              </li>
+
+              <li class="divider"></li>
+              <li>
+                <a href="">
+                  <i class="fa fa-envelope"></i>
+                  Email us<br>
+                  <span class="tiny">Mon-Fri 8am-8pm ET</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa fa-comment"></i>
+                  Live Chat</a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa fa-phone"></i>
+                  1-800-555-6666<br>
+                  <span class="tiny">Mon-Fri 8am-8pm ET</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" ng-show="app.loggedIn">
+          <li>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">
+              <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;
+              <span>John Robie</span>&nbsp;&nbsp;
+              <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="">Plan</a>
+              </li>
+              <li>
+                <a href="">Billing &amp; Payments</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="">
+                  <i class="fa fa-user"></i>&nbsp;&nbsp;Profile</a>
+              </li>
+              <li>
+                <a href="" ng-click="app.logout()">
+                  <i class="fa fa-sign-out"></i>&nbsp;&nbsp;Sign out</a>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+<!-- /.navbar-collapse -->
+    </div>
+  </nav>
+</div>
